@@ -35,24 +35,13 @@ class souqScrapper:
         imgUrl = image.find('img').get('src')
         return imgUrl
 
-
-
-
-
-
-
-
-
-
-
-# # condition = soup.find("dl", {"class":"stats clearfix"})
-# # cond = condition.find("dd").next_sibling
-# # soldBy = condition.find("dt").next_sibling
-# # print cond
-# # print soldBy
-
- 
-
+    def color_condition_soldBy(self):
+        condition = self.soup.find("div", {"class":"level-1 item-connection"})
+        cond = self.soup.find("dl" , {"class" : "stats clearfix"})
+        condValue = cond.find("dd").text
+        color = condition.find("span").text
+        soldBy = cond.find("b").text
+        return color + " " + condValue + " " + soldBy
 
 
 
