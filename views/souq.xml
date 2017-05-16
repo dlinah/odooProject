@@ -1,24 +1,57 @@
 <odoo>
 	<data>
-		<menuitem id="souq_menu" name="souq"/>
-        <menuitem id="products" name="Products" parent="souq_menu" action="product_action"/>
-		<record id="products_tree_view" model="ir.ui.view">
+		
+		<record id="product_tree_view" model="ir.ui.view">
             <field name="name">Products Tree View</field>
-            <field name="model">souq.products</field>
+            <field name="model">souq.product</field>
             <field name="arch" type="xml">
                 <tree>
                     <field name="name"/>
                     <field name="condition"/>
-                    <field name="url"/>
-                    <field name="ptice"/>
+                    <field name="link"/>
+                    <field name="price"/>
                 </tree>
             </field>
         </record>
+        <record id="product_form_view" model="ir.ui.view">
+            <field name="name">tproduct form view</field>
+            <field name="model">souq.product</field>
+            <field name="arch" type="xml">
+            	<form>
+                    <sheet>
+                    	<div class="oe_button_box" name="button_box">
+                            <button name="update_product" type="object" class="oe_highlight" string="update" icon="fa-download">
+                            </button>
+                        </div>
+                    	<field name="image" widget="image" class="oe_avatar" options="{&quot;preview_image&quot;:&quot;image_medium&quot;}"/>
+                        <div class="oe_title">
+                            <label for="name" class="oe_edit_only"/>
+                            <h1>
+                                <field name="name" placeholder="product name"/>
+                            </h1>
+                        </div>
+                    	<group>
+                    		<field name="price"/>
+                    	</group>
+                    	<group>
+                    		
+                    		<field name="description"/>
+                    		<field name="link"/>
+                    		<field name="condition"/>
+                    		<field name="seller"/>
+                    		
+                    	</group>
+                    </sheet>
+            	</form>
+        	</field>
+        </record>
         <record id="product_action" model="ir.actions.act_window">
             <field name="name">product</field>
-            <field name="res_model">souq.productS</field>
+            <field name="res_model">souq.product</field>
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>
         </record>
+        <menuitem id="souq_menu" name="souq"/>
+        <menuitem id="products" name="Products" parent="souq_menu" action="product_action"/>
 	</data>
 </odoo>

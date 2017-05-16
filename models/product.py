@@ -4,7 +4,7 @@ class Product(models.Model):
 	_name='souq.product'
 	link=fields.Char()
 	name=fields.Char()
-	price=fields.float()
+	price=fields.Float()
 	description=fields.Char()
 	image=fields.Binary()
 	condition=fields.Char()

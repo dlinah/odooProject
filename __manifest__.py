@@ -1,8 +1,8 @@
 {
-    'name': 'souq products',
+    'name': 'souq',
     'author':'lina',
     'data':[
-        'views/products.xml',
-        #"data/automated.xml"
+        'views/souq.xml'
+       
     ]
 }
