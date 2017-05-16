@@ -35,7 +35,7 @@ class souqScrapper:
         imgUrl = image.find('img').get('src')
         return imgUrl
 
-    def color_condition(self):
+    def color_condition_soldBy(self):
         condition = self.soup.find("div", {"class":"level-1 item-connection"})
         cond = self.soup.find("dl" , {"class" : "stats clearfix"})
         condValue = cond.find("dd").text
@@ -50,7 +50,7 @@ print('title is ' + scrapper.title())
 print('price is ' + scrapper.price())
 print('description is ' + scrapper.description())
 print('image is ' + scrapper.image_url())
-print('color & condition are ' + scrapper.color_condition())
+print('color & condition are ' + scrapper.color_condition_soldBy())
 
 
 
