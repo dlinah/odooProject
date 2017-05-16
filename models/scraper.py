@@ -12,7 +12,7 @@ class souqScrapper:
          # print soup.prettify()
 
 
-    def title(self):
+    def name(self):
          pn = self.soup.find("div", {"class":"small-12 columns product-title"})
          pText = pn.find("h1").text
          return pText
@@ -36,12 +36,7 @@ class souqScrapper:
         return imgUrl
 
 
-scrapper = souqScrapper('https://egypt.souq.com/eg-en/samsung-grand-prime-plus-dual-sim-8gb-1-5gb-ram-4g-lte-gold-11871414/i/')
 
-print('title is ' + scrapper.title())
-print('price is ' + scrapper.price())
-print('description is ' + scrapper.description())
-print('image is ' + scrapper.image_url())
 
 
 
