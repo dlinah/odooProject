@@ -35,6 +35,14 @@ class souqScrapper:
         imgUrl = image.find('img').get('src')
         return imgUrl
 
+    def color_condition(self):
+        condition = self.soup.find("div", {"class":"level-1 item-connection"})
+        cond = self.soup.find("dl" , {"class" : "stats clearfix"})
+        condValue = cond.find("dd").text
+        color = condition.find("span").text
+        soldBy = cond.find("b").text
+        return color + " " + condValue + " " + soldBy
+
 
 scrapper = souqScrapper('https://egypt.souq.com/eg-en/samsung-grand-prime-plus-dual-sim-8gb-1-5gb-ram-4g-lte-gold-11871414/i/')
 
@@ -42,6 +50,8 @@ print('title is ' + scrapper.title())
 print('price is ' + scrapper.price())
 print('description is ' + scrapper.description())
 print('image is ' + scrapper.image_url())
+print('color & condition are ' + scrapper.color_condition())
+
 
 
 
