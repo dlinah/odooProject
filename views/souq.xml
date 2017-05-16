@@ -1,0 +1,24 @@
+<odoo>
+	<data>
+		<menuitem id="souq_menu" name="souq"/>
+        <menuitem id="products" name="Products" parent="souq_menu" action="product_action"/>
+		<record id="products_tree_view" model="ir.ui.view">
+            <field name="name">Products Tree View</field>
+            <field name="model">souq.products</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="condition"/>
+                    <field name="url"/>
+                    <field name="ptice"/>
+                </tree>
+            </field>
+        </record>
+        <record id="product_action" model="ir.actions.act_window">
+            <field name="name">product</field>
+            <field name="res_model">souq.productS</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+	</data>
+</odoo>
