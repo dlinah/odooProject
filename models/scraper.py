@@ -1,3 +1,4 @@
+
 import requests
 import  lxml
 from bs4 import BeautifulSoup
@@ -35,34 +36,4 @@ class souqScrapper:
         imgUrl = image.find('img').get('src')
         return imgUrl
 
-    def color_condition_soldBy(self):
-        condition = self.soup.find("div", {"class":"level-1 item-connection"})
-        cond = self.soup.find("dl" , {"class" : "stats clearfix"})
-        condValue = cond.find("dd").text
-        color = condition.find("span").text
-        soldBy = cond.find("b").text
-        return color + " " + condValue + " " + soldBy
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- 

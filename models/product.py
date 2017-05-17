@@ -5,10 +5,16 @@ import urllib2
 
 class Product(models.Model):
 
-	@api.depends('image_url')
-	def _load_image(self,cr,uid,ids,args,fields,context=None):
+	@api.onchange('image_url')
+	def _load_image(self):
+		print 'ckdmkemdkmdkemdk --------------'
 		link=self.image_url
-		self.image = base64.encodestring(urllib2.urlopen(link).read())
+		image = base64.encodestring(urllib2.urlopen(link).read())
+		print imag
+		self.image=image
+		print 'inchange'
+
+
 
 	_name='souq.product'
 	link=fields.Char()
@@ -27,5 +33,17 @@ class Product(models.Model):
 		self.description=scraper.description()
 		self.image_url=scraper.image_url()
 
+	def update_all_products(self):
+		records = self.env['souq.product'].search([])
+		for record in records:
+			print ("id :", record.id)
+			obj = self.env['souq.product'].browse([record.id])
+			scrapper = souqScrapper(obj.link)
+			name= scraper.name()
+			price= scraper.price()
+			description=scraper.description()
+			image_url=scraper.image_url()
+			res = obj.write({"name": name, "description": description, "price": price,'image_url':image_url})
+       
 	
     
