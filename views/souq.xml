@@ -1,6 +1,5 @@
 <odoo>
 	<data>
-		
 		<record id="product_tree_view" model="ir.ui.view">
             <field name="name">Products Tree View</field>
             <field name="model">souq.product</field>
@@ -34,7 +33,6 @@
                     		<field name="price"/>
                     	</group>
                     	<group>
-                    		
                     		<field name="description"/>
                     		<field name="link"/>
                     		<field name="condition"/>
@@ -54,7 +52,4 @@
         <menuitem id="souq_menu" name="souq"/>
         <menuitem id="products" name="Products" parent="souq_menu" action="product_action"/>
 	</data>
-
-    <!-- cron job-->
-    
 </odoo>
