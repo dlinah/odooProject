@@ -5,12 +5,11 @@ import urllib2
 
 class Product(models.Model):
 
-	@api.onchange('image_url')
-	def _load_image(self):
+
+	def load_image(self,image_url):
 		print 'ckdmkemdkmdkemdk --------------'
-		link=self.image_url
-		image = base64.encodestring(urllib2.urlopen(link).read())
-		print imag
+		image = base64.decodestring(urllib2.urlopen(image_url).read())
+		print image
 		self.image=image
 		print 'inchange'
 
@@ -24,21 +23,22 @@ class Product(models.Model):
 	image=fields.Binary()
 	condition=fields.Char()
 	seller=fields.Char()
-	image_url=fields.Char()
 
 	def update_product(self):
 		scraper = souqScrapper(self.link)
 		self.name= scraper.name()
 		self.price= scraper.price()
 		self.description=scraper.description()
-		self.image_url=scraper.image_url()
+		image_url=scraper.image_url()
+		self.load_image(image_url)
+		print(self.image)
 
 	def update_all_products(self):
 		records = self.env['souq.product'].search([])
 		for record in records:
 			print ("id :", record.id)
 			obj = self.env['souq.product'].browse([record.id])
-			scrapper = souqScrapper(obj.link)
+			scraper = souqScrapper(obj.link)
 			name= scraper.name()
 			price= scraper.price()
 			description=scraper.description()
