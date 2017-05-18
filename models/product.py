@@ -40,4 +40,4 @@ class Product(models.Model):
             price = scraper.price()
             description = scraper.description()
             image_url = scraper.image_url()
-            res = obj.write({"name": name, "description": description, "price": price, 'image_url': image_url})
+            obj.write({"name": name, "description": description, "price": price, 'image_url': image_url})
