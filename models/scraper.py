@@ -6,7 +6,6 @@ class SouqScrapper:
     def __init__(self, url):
         self.source = requests.get(url)
         self.soup = BeautifulSoup(self.source.content, "lxml")
-        # print soup.prettify()
 
     def name(self):
         pn = self.soup.find("div", {"class": "small-12 columns product-title"})
@@ -15,7 +14,6 @@ class SouqScrapper:
 
     def price(self):
         price = self.soup.find("div", {"class": "text-default price-container"})
-        # price_header = price.find("h3", {"class": "price is sk-clr1"})
         price_value = price.find("h3").text
         return price_value
 
